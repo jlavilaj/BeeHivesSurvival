@@ -6,7 +6,7 @@ Unit = plate (run + plate label + group). Outputs to outputs/:
   cox_assay2.csv                 HR for transfer within each humidity regime (Efron, SE clustered by plate), windows, interaction
   d22_assay2_plate_models.csv    plate-level binomial GLMs at D22 (factorial, with/without run)
 Blank larvae: 4 larvae (run 6, plate B1, 95/80/60 + paper, larvae 10-13) have NO record at any visit.
-Primary analysis treats them as not evaluable (excluded); sensitivity analysis counts them as dead at D3 (as in Table S5).
+Primary analysis counts them as dead at D3 (decision of the authors; consistent with Table S5, 248/252 alive at D3); sensitivity analysis excludes them.
 """
 import numpy as np, pandas as pd, statsmodels.api as sm, statsmodels.formula.api as smf
 from scipy import stats
@@ -24,13 +24,13 @@ print("blank larvae (no record at any visit):", int(blank.sum()), "| plates:", r
 def build(df):
     A=(df[cols]==1).values; fd=np.where((~A).any(axis=1),(~A).argmax(axis=1),-1)
     df=df.copy(); df["event"]=(fd>=0).astype(int); df["time"]=np.where(fd>=0,np.array(days)[np.clip(fd,0,None)],22); return df
-prim = build(raw[~blank]); sens = build(raw)
+prim = build(raw); sens = build(raw[~blank])
 
 # ---- Table 3 (plate-level) ----
 def plate_pct(df, d):
     return df.groupby(["grp","pid"])[f"day_{d}"].apply(lambda s:(s==1).sum()/len(s)*100).reset_index(name="pct")
 rows=[]
-for label,df in (("exclude_blank",raw[~blank]),("blank_dead",raw)):
+for label,df in (("blank_dead",raw),("exclude_blank",raw[~blank])):
     for d in days:
         P=plate_pct(df,d); g={k:v.pct.values for k,v in P.groupby("grp")}
         for hum in ("95/80/60","70/70/60"):
@@ -41,7 +41,7 @@ for label,df in (("exclude_blank",raw[~blank]),("blank_dead",raw)):
                 rows.append(dict(handling_blank=label,day=d,humidity=hum,transfer=tr,n_plates=len(x),mean=m,sd=s,ci_low=max(m-h,0),ci_high=min(m+h,100),
                   min=x.min(),max=x.max(),p_transfer_within_regime=p_tr,p_humidity_within_transfer=stats.mannwhitneyu(x,other).pvalue))
 T3=pd.DataFrame(rows); T3.round(4).to_csv(out/"table3_assay2_plates.csv",index=False)
-print(T3[(T3.handling_blank=="exclude_blank")&T3.day.isin([3,15,22])].round(2).to_string(index=False))
+print(T3[(T3.handling_blank=="blank_dead")&T3.day.isin([3,15,22])].round(2).to_string(index=False))
 
 # ---- S6 ----
 s6=[]
@@ -61,7 +61,7 @@ def cox(df,X,label,names):
         b,se=m.params[i],m.bse[i]; r.append(dict(model=label,term=nm,coef=b,se=se,z=b/se,p=2*stats.norm.sf(abs(b/se)),hr=np.exp(b),lo=np.exp(b-1.96*se),hi=np.exp(b+1.96*se),n=len(df),events=int(df.event.sum())))
     return r
 res=[]
-for tag,df in (("exclude_blank",prim),("blank_dead",sens)):
+for tag,df in (("blank_dead",prim),("exclude_blank",sens)):
     for hum in ("95/80/60","70/70/60"):
         g=df[df.hum==hum]
         res+=cox(g,["paper"],f"[{tag}] {hum}: P vs WP, overall",["paper"])
@@ -69,7 +69,7 @@ for tag,df in (("exclude_blank",prim),("blank_dead",sens)):
         w2=g[g.time>8].copy(); w2["time"]-=8; res+=cox(w2,["paper"],f"[{tag}] {hum}: P vs WP, D8-D22",["paper"])
     df=df.copy(); df["h70"]=(df.hum=="70/70/60").astype(int); df["inter"]=df.h70*df.paper
     res+=cox(df,["h70","paper","inter"],f"[{tag}] factorial overall",["humidity 70 vs 95 (WP)","paper (at 95/80/60)","interaction humidity x paper"])
-CX=pd.DataFrame(res); CX.round(4).to_csv(out/"cox_assay2.csv",index=False); print(CX[CX.model.str.contains("exclude")].round(3).to_string(index=False))
+CX=pd.DataFrame(res); CX.round(4).to_csv(out/"cox_assay2.csv",index=False); print(CX[CX.model.str.contains("blank_dead")].round(3).to_string(index=False))
 
 # ---- D22 plate-level GLMs ----
 P=prim.groupby(["pid","run","hum","paper"]).agg(n=("larva_id","size"),alive=("day_22",lambda s:(s==1).sum())).reset_index(); P["h70"]=(P.hum=="70/70/60").astype(int)
