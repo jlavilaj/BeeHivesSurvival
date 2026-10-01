@@ -1,0 +1,81 @@
+group,colony,day,mean,sd,n
+A3-95/80/60-WP,ALL (mean of plates),D4,95.139,2.66,4
+A3-95/80/60-WP,colony 1,D4,97.917,4.167,4
+A3-95/80/60-WP,colony 2,D4,93.75,7.979,4
+A3-95/80/60-WP,colony 3,D4,93.75,4.167,4
+A3-95/80/60-WP,ALL (mean of plates),D8,79.861,6.159,4
+A3-95/80/60-WP,colony 1,D8,79.167,10.758,4
+A3-95/80/60-WP,colony 2,D8,79.167,8.333,4
+A3-95/80/60-WP,colony 3,D8,81.25,7.979,4
+A3-95/80/60-WP,ALL (mean of plates),D15,31.944,6.612,4
+A3-95/80/60-WP,colony 1,D15,35.417,12.5,4
+A3-95/80/60-WP,colony 2,D15,35.417,10.486,4
+A3-95/80/60-WP,colony 3,D15,25.0,11.785,4
+A3-95/80/60-WP,ALL (mean of plates),D22,18.056,4.811,4
+A3-95/80/60-WP,colony 1,D22,16.667,6.804,4
+A3-95/80/60-WP,colony 2,D22,25.0,11.785,4
+A3-95/80/60-WP,colony 3,D22,12.5,8.333,4
+A3-95/80/60-P,ALL (mean of plates),D4,94.444,5.556,4
+A3-95/80/60-P,colony 1,D4,91.667,11.785,4
+A3-95/80/60-P,colony 2,D4,95.833,4.811,4
+A3-95/80/60-P,colony 3,D4,95.833,4.811,4
+A3-95/80/60-P,ALL (mean of plates),D8,78.472,4.744,4
+A3-95/80/60-P,colony 1,D8,79.167,10.758,4
+A3-95/80/60-P,colony 2,D8,85.417,12.5,4
+A3-95/80/60-P,colony 3,D8,70.833,8.333,4
+A3-95/80/60-P,ALL (mean of plates),D15,62.5,8.019,4
+A3-95/80/60-P,colony 1,D15,62.5,17.347,4
+A3-95/80/60-P,colony 2,D15,79.167,17.347,4
+A3-95/80/60-P,colony 3,D15,45.833,24.056,4
+A3-95/80/60-P,ALL (mean of plates),D22,44.444,4.536,4
+A3-95/80/60-P,colony 1,D22,39.583,17.18,4
+A3-95/80/60-P,colony 2,D22,62.5,20.972,4
+A3-95/80/60-P,colony 3,D22,31.25,17.18,4
+A3-70/70/60-WP,ALL (mean of plates),D4,95.139,3.495,4
+A3-70/70/60-WP,colony 1,D4,91.667,6.804,4
+A3-70/70/60-WP,colony 2,D4,100.0,0.0,4
+A3-70/70/60-WP,colony 3,D4,93.75,7.979,4
+A3-70/70/60-WP,ALL (mean of plates),D8,83.333,3.928,4
+A3-70/70/60-WP,colony 1,D8,87.5,10.758,4
+A3-70/70/60-WP,colony 2,D8,87.5,15.957,4
+A3-70/70/60-WP,colony 3,D8,75.0,15.215,4
+A3-70/70/60-WP,ALL (mean of plates),D15,67.361,6.564,4
+A3-70/70/60-WP,colony 1,D15,68.75,18.478,4
+A3-70/70/60-WP,colony 2,D15,72.917,7.979,4
+A3-70/70/60-WP,colony 3,D15,60.417,19.691,4
+A3-70/70/60-WP,ALL (mean of plates),D22,50.694,4.744,4
+A3-70/70/60-WP,colony 1,D22,45.833,10.758,4
+A3-70/70/60-WP,colony 2,D22,56.25,12.5,4
+A3-70/70/60-WP,colony 3,D22,50.0,18.002,4
+A3-70/70/60-P,ALL (mean of plates),D4,93.056,3.586,4
+A3-70/70/60-P,colony 1,D4,91.667,6.804,4
+A3-70/70/60-P,colony 2,D4,97.917,4.167,4
+A3-70/70/60-P,colony 3,D4,89.583,4.167,4
+A3-70/70/60-P,ALL (mean of plates),D8,86.111,4.536,4
+A3-70/70/60-P,colony 1,D8,81.25,12.5,4
+A3-70/70/60-P,colony 2,D8,91.667,6.804,4
+A3-70/70/60-P,colony 3,D8,85.417,4.167,4
+A3-70/70/60-P,ALL (mean of plates),D15,55.556,5.556,4
+A3-70/70/60-P,colony 1,D15,52.083,10.486,4
+A3-70/70/60-P,colony 2,D15,70.833,10.758,4
+A3-70/70/60-P,colony 3,D15,43.75,12.5,4
+A3-70/70/60-P,ALL (mean of plates),D22,25.0,6.001,4
+A3-70/70/60-P,colony 1,D22,18.75,7.979,4
+A3-70/70/60-P,colony 2,D22,37.5,8.333,4
+A3-70/70/60-P,colony 3,D22,18.75,7.979,4
+A3-HIVE,colony 1,D4,89.0,,300
+A3-HIVE,colony 2,D4,97.333,,300
+A3-HIVE,colony 3,D4,88.667,,300
+A3-HIVE,ALL (mean of colonies),D4,91.667,4.91,3
+A3-HIVE,colony 1,D8,87.0,,300
+A3-HIVE,colony 2,D8,96.333,,300
+A3-HIVE,colony 3,D8,76.333,,300
+A3-HIVE,ALL (mean of colonies),D8,86.556,10.007,3
+A3-HIVE,colony 1,D15,86.333,,300
+A3-HIVE,colony 2,D15,96.333,,300
+A3-HIVE,colony 3,D15,74.333,,300
+A3-HIVE,ALL (mean of colonies),D15,85.667,11.015,3
+A3-HIVE,colony 1,D22,82.0,,300
+A3-HIVE,colony 2,D22,96.0,,300
+A3-HIVE,colony 3,D22,70.667,,300
+A3-HIVE,ALL (mean of colonies),D22,82.889,12.69,3

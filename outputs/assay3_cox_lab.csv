@@ -1,0 +1,12 @@
+model,term,coef,se,z,p,hr,lo,hi,n,events
+lab groups vs A3-95/80/60-WP (plate-clustered),A3-95/80/60-P,-0.719,0.1016,-7.073,0.0,0.4873,0.3992,0.5947,576,377
+lab groups vs A3-95/80/60-WP (plate-clustered),A3-70/70/60-WP,-0.9075,0.0929,-9.766,0.0,0.4035,0.3363,0.4841,576,377
+lab groups vs A3-95/80/60-WP (plate-clustered),A3-70/70/60-P,-0.326,0.082,-3.9774,0.0001,0.7218,0.6147,0.8476,576,377
+lab factorial (plate-clustered),humidity 70 (WP),-0.9075,0.0929,-9.766,0.0,0.4035,0.3363,0.4841,576,377
+lab factorial (plate-clustered),paper (at 95/80/60),-0.719,0.1016,-7.073,0.0,0.4873,0.3992,0.5947,576,377
+lab factorial (plate-clustered),interaction,1.3005,0.1305,9.9693,0.0,3.6712,2.8429,4.7408,576,377
+lab factorial + colony (colony 1 = reference),colony 2,-0.3816,0.1357,-2.8124,0.0049,0.6828,0.5233,0.8908,576,377
+lab factorial + colony (colony 1 = reference),colony 3,0.1312,0.0778,1.6866,0.0917,1.1402,0.979,1.3279,576,377
+lab factorial + colony (colony 1 = reference),humidity 70 (WP),-0.9123,0.0985,-9.2648,0.0,0.4016,0.3311,0.4871,576,377
+lab factorial + colony (colony 1 = reference),paper (at 95/80/60),-0.7032,0.1115,-6.3081,0.0,0.495,0.3978,0.6159,576,377
+lab factorial + colony (colony 1 = reference),interaction,1.3027,0.1409,9.2448,0.0,3.6794,2.7914,4.8498,576,377
