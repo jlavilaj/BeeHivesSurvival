@@ -40,7 +40,7 @@ S6 = pd.DataFrame(s6); S6.round(4).to_csv(out/"tableS6_assay1_30plates.csv", ind
 
 # ---- Cox ----
 def cox(d, label, strata=None):
-    m = PHReg(d.time.values, d[["reg"]].values, status=d.event.values, ties="breslow", strata=strata).fit(groups=d.plate_id.values)
+    m = PHReg(d.time.values, d[["reg"]].values, status=d.event.values, ties="efron", strata=strata).fit(groups=d.plate_id.values)
     b, se = m.params[0], m.bse[0]
     return dict(model=label, coef=b, se=se, z=b/se, p=2*stats.norm.sf(abs(b/se)), hr=np.exp(b), lo=np.exp(b-1.96*se), hi=np.exp(b+1.96*se), n=len(d), events=int(d.event.sum()))
 res = [cox(df,"Overall D3-D22 (cluster-robust, plate)")]
@@ -49,7 +49,7 @@ w1 = df.copy(); w1.loc[w1.time>8, ["time","event"]] = [8,0]; res.append(cox(w1,"
 w2 = df[df.time>8].copy(); w2["time"] -= 8; res.append(cox(w2,"Window D8-D22 (alive at D8)"))
 R = pd.DataFrame(res); R.round(4).to_csv(out/"cox_assay1_30plates.csv", index=False); print(R.round(3).to_string(index=False))
 # naive (larva-independent) SE for comparison
-m = PHReg(df.time.values, df[["reg"]].values, status=df.event.values, ties="breslow").fit()
+m = PHReg(df.time.values, df[["reg"]].values, status=df.event.values, ties="efron").fit()
 print("naive HR %.2f (%.2f-%.2f)" % (np.exp(m.params[0]), *np.exp(m.params[0]+np.array([-1.96,1.96])*m.bse[0])))
 
 # ---- D22 at plate level ----
