@@ -18,12 +18,18 @@ rows = [r for r in ws.iter_rows(values_only=True)][2:]
 rows = [r for r in rows if any(v is not None for v in r)]
 days = [3,4,5,6,7,8,15,22]
 cols = [11,13,15,17,19,21,23,25]
-recs = []
+recs = []; raw = []
 for i, r in enumerate(rows, 1):
     reg = "95/80/60" if r[7] in (1,3) else "70/70/60"   # TREATMENT 1 and 3 = 95/80/60 (verified against TRATAMIENTO label)
     assert (("95" in r[6]) == (reg == "95/80/60"))
     recs.append(dict(plate=i, regime=reg, n0=r[10], **{f"d{d}": r[c] for d, c in zip(days, cols)}))
+    # raw record exactly as in the workbook sheet 'ARCHIVO SPSS' (counts only; the PER_SUP_* percentage columns are derived)
+    raw.append(dict(plate_row=i, datos_utiles=r[2], trabajo_entre_humedades=r[3], run=r[4], repeticion=r[5],
+                    tratamiento=r[6], treatment_code=r[7], papel=r[8], papel_numero=r[9], humidity_regime=reg,
+                    larvas_iniciales=r[10], **{f"alive_d{d}": r[c] for d, c in zip(days, cols)}))
 P = pd.DataFrame(recs); P.to_csv(out/"assay1_original_plate_counts.csv", index=False)
+proc = root / "data" / "processed"; proc.mkdir(parents=True, exist_ok=True)
+pd.DataFrame(raw).to_csv(proc/"assay1_original10_plate_counts_raw.csv", index=False)
 # monotonic check
 cnt = P[[f"d{d}" for d in days]].values
 assert (np.diff(cnt, axis=1) <= 0).all(), "non-monotone counts"
@@ -59,7 +65,10 @@ for _, r in P.iterrows():
     for d in days:
         a = int(r[f"d{d}"]); L += [dict(plate=r.plate, regime=r.regime, time=d, event=1)]*(prev-a); prev = a
     L += [dict(plate=r.plate, regime=r.regime, time=22, event=0)]*prev
-L = pd.DataFrame(L); L["reg"] = (L.regime=="70/70/60").astype(int)
+L = pd.DataFrame(L)
+L.insert(0, "larva_id", range(1, len(L)+1))   # reconstructed from plate counts: colony/individual identity is NOT in the workbook
+L.rename(columns={"time": "time_first_dead_or_censor", "event": "event_death"}).to_csv(proc/"assay1_original10_larva_level_reconstructed.csv", index=False)
+L["reg"] = (L.regime=="70/70/60").astype(int)
 print("larvae:", len(L), "events:", L.event.sum(), "censored:", (L.event==0).sum())
 def cox(df, label):
     m = PHReg(df.time.values, df[["reg"]].values, status=df.event.values, ties="breslow").fit(groups=df.plate.values)
