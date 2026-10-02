@@ -31,7 +31,7 @@ run,plate,block,humidity_regime_code,colony,larva_id,time_first_dead_or_censor,e
 1,A1,BLOQUE 1,1,3,30,15,1
 1,A1,BLOQUE 1,1,3,31,22,0
 1,A1,BLOQUE 1,1,3,32,15,1
-1,A1,BLOQUE 1,1,3,33,15,1
+1,A1,BLOQUE 1,1,3,33,22,0
 1,A1,BLOQUE 1,1,3,34,15,1
 1,A1,BLOQUE 1,1,3,35,15,1
 1,A1,BLOQUE 1,1,3,36,22,0
@@ -293,7 +293,7 @@ run,plate,block,humidity_regime_code,colony,larva_id,time_first_dead_or_censor,e
 1,C1,BLOQUE 2,2,1,4,15,1
 1,C1,BLOQUE 2,2,1,5,15,1
 1,C1,BLOQUE 2,2,1,6,22,0
-1,C1,BLOQUE 2,2,1,7,15,1
+1,C1,BLOQUE 2,2,1,7,22,0
 1,C1,BLOQUE 2,2,1,8,22,0
 1,C1,BLOQUE 2,2,1,9,15,1
 1,C1,BLOQUE 2,2,1,10,22,0
@@ -364,7 +364,7 @@ run,plate,block,humidity_regime_code,colony,larva_id,time_first_dead_or_censor,e
 1,B2,BLOQUE 2,2,1,3,15,1
 1,B2,BLOQUE 2,2,1,4,22,0
 1,B2,BLOQUE 2,2,1,5,15,1
-1,B2,BLOQUE 2,2,1,6,6,1
+1,B2,BLOQUE 2,2,1,6,15,1
 1,B2,BLOQUE 2,2,1,7,22,0
 1,B2,BLOQUE 2,2,1,8,22,0
 1,B2,BLOQUE 2,2,1,9,15,1
@@ -546,7 +546,7 @@ run,plate,block,humidity_regime_code,colony,larva_id,time_first_dead_or_censor,e
 2,A2,BLOQUE 1,1,4,5,22,0
 2,A2,BLOQUE 1,1,4,6,3,1
 2,A2,BLOQUE 1,1,4,7,15,1
-2,A2,BLOQUE 1,1,4,8,15,1
+2,A2,BLOQUE 1,1,4,8,22,0
 2,A2,BLOQUE 1,1,4,9,22,1
 2,A2,BLOQUE 1,1,4,10,15,1
 2,A2,BLOQUE 1,1,4,11,15,1
@@ -690,7 +690,7 @@ run,plate,block,humidity_regime_code,colony,larva_id,time_first_dead_or_censor,e
 2,B1,BLOQUE 2,2,4,5,22,0
 2,B1,BLOQUE 2,2,4,6,3,1
 2,B1,BLOQUE 2,2,4,7,7,1
-2,B1,BLOQUE 2,2,4,8,8,1
+2,B1,BLOQUE 2,2,4,8,22,1
 2,B1,BLOQUE 2,2,4,9,22,0
 2,B1,BLOQUE 2,2,4,10,22,0
 2,B1,BLOQUE 2,2,4,11,15,1

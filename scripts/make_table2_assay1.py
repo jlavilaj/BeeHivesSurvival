@@ -12,7 +12,7 @@ from scipy import stats
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-df = pd.read_csv(root / "data/processed/assay1_humidity_regimes.csv")
+df = pd.read_csv(root / "data/processed/assay1_humidity_regimes_gapfilled.csv")
 days = ["day_3","day_4","day_5","day_6","day_7","day_8","day_15","day_22"]
 plates = (df.assign(plate_id=df.run.astype(str) + "_" + df.plate)
             .groupby(["humidity_regime_code","plate_id"])[days]

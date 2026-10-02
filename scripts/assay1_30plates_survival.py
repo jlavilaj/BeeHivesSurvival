@@ -13,7 +13,7 @@ from scipy import stats
 from statsmodels.duration.hazard_regression import PHReg
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]; out = root/"outputs"
-df = pd.read_csv(root/"data/processed/assay1_humidity_regimes.csv")
+df = pd.read_csv(root/"data/processed/assay1_humidity_regimes_gapfilled.csv")
 days = [3,4,5,6,7,8,15,22]; cols = [f"day_{d}" for d in days]
 df["plate_id"] = df.run.astype(str)+"_"+df.plate
 df["reg"] = (df.humidity_regime_code==2).astype(int)
